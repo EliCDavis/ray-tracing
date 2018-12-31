@@ -1,9 +1,10 @@
 package main
 
 type HitRecord struct {
-	t      float32
-	p      *Vector3
-	normal *Vector3
+	t        float32
+	p        *Vector3
+	normal   *Vector3
+	material Material
 }
 
 func NewHitRecord() *HitRecord {
@@ -11,6 +12,7 @@ func NewHitRecord() *HitRecord {
 		0,
 		Vector3Zero,
 		Vector3Zero,
+		nil,
 	}
 }
 

@@ -84,6 +84,14 @@ func (v *Vector3) MultByConstant(t float32) *Vector3 {
 	}
 }
 
+func (v Vector3) MultByVector(o *Vector3) *Vector3 {
+	return &Vector3{
+		x: v.x * o.x,
+		y: v.y * o.y,
+		z: v.z * o.z,
+	}
+}
+
 func (v *Vector3) DivByConstant(t float32) *Vector3 {
 	return v.MultByConstant(1.0 / t)
 }

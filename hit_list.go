@@ -15,6 +15,7 @@ func (h *HitList) Hit(r *Ray, min float32, max float32, hitRecord *HitRecord) bo
 			hitRecord.t = tempRecord.t
 			hitRecord.p = tempRecord.p
 			hitRecord.normal = tempRecord.normal
+			hitRecord.material = tempRecord.material
 		}
 	}
 
