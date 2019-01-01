@@ -16,9 +16,13 @@ func NewVector3(x float32, y float32, z float32) *Vector3 {
 	}
 }
 
-var Right = NewVector3(1, 0, 0)
-var Vector3One = NewVector3(1, 1, 1)
-var Vector3Zero = NewVector3(0, 0, 0)
+func Vector3Zero() *Vector3 {
+	return NewVector3(0, 0, 0)
+}
+
+func Vector3One() *Vector3 {
+	return NewVector3(1, 1, 1)
+}
 
 func (v *Vector3) X() float32 {
 	return v.x

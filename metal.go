@@ -2,19 +2,20 @@ package main
 
 type Metal struct {
 	color *Vector3
+	fuzz  float32
 }
 
 func NewMetal(color *Vector3) *Metal {
-	return &Metal{color}
+	return &Metal{color, 0}
 }
 
-func (l Metal) reflect(v *Vector3, n *Vector3) *Vector3 {
-	return v.Sub(n.MultByConstant(2 * v.Dot(n)))
+func NewFuzzyMetal(color *Vector3, fuzz float32) *Metal {
+	return &Metal{color, fuzz}
 }
 
 func (l Metal) Scatter(in *Ray, rec *HitRecord, attenuation *Vector3, scattered *Ray) bool {
-	reflected := l.reflect(in.Direction().Normalized(), rec.Normal())
-	scattered = NewRay(rec.p, reflected)
-	attenuation = l.color
+	reflected := reflect(in.Direction().Normalized(), rec.Normal())
+	*scattered = *NewRay(rec.p, reflected.Add(randomInUnitSphere().MultByConstant(l.fuzz)))
+	*attenuation = *l.color
 	return scattered.Direction().Dot(rec.Normal()) > 0
 }

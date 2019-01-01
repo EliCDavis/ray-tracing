@@ -10,8 +10,8 @@ type HitRecord struct {
 func NewHitRecord() *HitRecord {
 	return &HitRecord{
 		0,
-		Vector3Zero,
-		Vector3Zero,
+		Vector3Zero(),
+		Vector3Zero(),
 		nil,
 	}
 }
